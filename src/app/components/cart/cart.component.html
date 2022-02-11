@@ -1,0 +1,33 @@
+<div class= "carte mb-2">
+    <div class= "card-body">
+      <h1 class= "h4 card-title text-center text-primary mb-2">My Cart</h1><br>
+      <div class= "table-responsive">
+        <table class= "table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th scope= "col">Name</th>
+              <th scope= "col">Price</th>
+              <th scope= "col">Amount</th>
+              <th scope= "col">Total</th>
+              <th scope= "col">Options</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let good of cart; index as i">
+                <td>{{good.name}}</td>
+                <td>{{good.price|currency}}</td>
+                <td>
+                    <input type="number" placeholder="Amount(kg)" [(ngModel)] = "good.amount">
+                </td>
+                <td>{{(good?.price * good?.amount)|currency}}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary me-2" (click)="save(i)">Save</button>
+                    <button type="button" class="btn btn-outline-danger me-2" (click)="delete(i)">Delete</button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

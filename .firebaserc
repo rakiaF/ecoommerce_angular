@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "market-dfe1c": {
+      "hosting": {
+        "angularfire": [
+          "market-dfe1c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "market-dfe1c"
+  }
+}

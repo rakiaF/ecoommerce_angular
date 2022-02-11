@@ -1,0 +1,63 @@
+        
+<h2 class="text-center">Add New Good</h2>
+
+<div class="row" style="padding-left: 25px;">
+    <div class="col-md-6">
+        <form #f="ngForm" (ngSubmit)="addNewGood(f)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input ngModel #name="ngModel" type="text" class="form-control" name="name"  required ><br>
+                </div>
+                <div class="alert alert-danger" *ngIf="name.invalid && name.touched">name is required</div>
+
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input ngModel #price="ngModel" type="number" name="price"  class="form-control" aria-label="Amount (to the nearest dollar)" required>
+                    <span class="input-group-text">.00</span>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="price.invalid && price.touched">price is required</div>
+
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <div class="input-group mb-3">
+                    <select ngModel #category="ngModel" name="category" id="category"class="form-select" >
+                        <option selected>Please Choose Categories</option>
+                        <option *ngFor="let catg of categories$ | async " [ngValue]="catg.name">{{catg.name}}</option>
+                        </select>
+                    <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="category.invalid && category.touched">category is required</div>
+            
+            </div>
+            <div class="form-group">
+                <label for="image">Image Url</label>
+                <input type="file" ngModel name="image" required #image><br><br>
+
+            </div>
+
+            <input type="submit" value="Add" class="btn btn-primary" [disabled]="f.invalid">
+    
+        </form>
+    </div>
+    <div class="col-md-6" style="padding-top: 20px;">
+        <div class="card" style="width: 18rem;">
+            <img [src]="image.value" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{name.value}}</h5>
+              <h5 class="card-title">{{price.value | currency:'USD':true}}</h5>
+              <h5 class="card-title">{{category.value}}</h5>
+
+
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+    </div>
+</div>
+
+

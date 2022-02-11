@@ -1,0 +1,30 @@
+<div class="container">
+<div class="body">
+    <h2 class="text-center">Sign Up</h2>
+    <form #f="ngForm">
+        
+        <input ngModel name="name" #name="ngModel" type="text" class="form-control" placeholder="Your name" required>
+        <div class="alert alert-danger" *ngIf="name.invalid && name.touched">Name is required</div>
+        <br>
+        <input ngModel name="email" #prmEmail="ngModel" type="email" class="form-control" placeholder="Your email" required email>
+        <br>
+
+        <input ngModel name="password" #password="ngModel"  type="password" class="form-control" placeholder="Your password" required minlength="6">
+        <br>
+        <input ngModel name="passwordconfirm" #passwordconfirm="ngModel" type="password" class="form-control" placeholder="Confirm Your password" required>
+        <div class="alert alert-danger" *ngIf="passwordconfirm.invalid && passwordconfirm.touched">Password is required</div>
+        <div class="alert alert-danger" *ngIf="password.value !== passwordconfirm.value">Password are not equal</div>
+        <br>
+
+        <div class="alert alert-danger" *ngIf="passwordconfirm.invalid && passwordconfirm.touched">Password is required</div>
+        <div class="alert alert-danger" *ngIf="password.value !== passwordconfirm.value && passwordconfirm.touched">Password are not Equal </div>
+
+        <input ngModel name="address" #address="ngModel" type="text" class="form-control" placeholder="Address" required>
+        <div class="alert alert-danger" *ngIf="address.invalid && address.touched">Address is required</div>
+        <br>
+
+        <button class="btn btn-primary" [disabled]="f.invalid || password.value !== passwordconfirm.value" (click)="signup(f)">Create Account</button>
+   
+    </form>
+</div>
+</div>
